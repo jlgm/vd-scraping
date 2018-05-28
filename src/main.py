@@ -9,6 +9,7 @@ for repo in REPOS:
     r.start()
     stats, folders = r.stats()
     f = open(repo.replace('/', '-'), "w")
+    f.write("%s\n" % repo)
     f.write("%d lines in total\n" % r.total_lines)
     f.write("%d bytes in total\n" % r.total_bytes)
     f.write("%s\n" % stats)
