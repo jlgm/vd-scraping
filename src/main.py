@@ -2,8 +2,9 @@
 
 from repo import Repository
 
-REPOS = [line.rstrip('\n') for line in open("../repositories.txt")]
+REPOS = [line.rstrip('\n') for line in open("repositories.txt")]
 for repo in REPOS:
+    print "Running on %s" % (repo)
     r = Repository(repo)
     r.start()
     stats, folders = r.stats()
