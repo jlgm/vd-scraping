@@ -3,12 +3,12 @@
 import requests
 
 from bs4 import BeautifulSoup
-from anytree import Node, RenderTree
+from anytree import Node
 from elem_handler import Elem
 
 REQ = requests.Session()
 
-def dfs(current, parent=None, root="https://github.com"):
+def dfs(current, parent=None, root="https://github.com/"):
     """this function does a DFS on the root of the repository and collects all the information we will need"""
 
     elem = Elem(current)
@@ -24,7 +24,7 @@ def dfs(current, parent=None, root="https://github.com"):
         return cur_node
 
     cur_node = Node(elem.name()) if parent is None else Node(elem.name(), parent=parent)
-
+    
     page = REQ.get(root + current)
     soup = BeautifulSoup(page.content, 'html.parser')
 
@@ -34,10 +34,4 @@ def dfs(current, parent=None, root="https://github.com"):
 
     return cur_node
 
-# TREE = dfs("/jlgm/QuakeParser")
-# for pre, fill, node in RenderTree(TREE):
-#     if hasattr(node, "lines"):
-#         print("%s%s (%d lines)" % pre, node.name, node.lines)
-#     else:
-#         print("%s%s" % pre, node.name)
-    
+
