@@ -20,6 +20,8 @@ class Elem(object):
 
     def blob_to_raw(self):
         """replaces 'blob' with 'raw' in this elem url, allowing the scraper to fetch only the file instead of the html"""
+        if not self.is_blob():
+            raise NameError("not a blob!")
         parts = self.url.split('/')
         raw = parts[0]
         for part in parts[1:]:
@@ -31,6 +33,8 @@ class Elem(object):
 
     def extension(self):
         """returns the extension of this file if it has one"""
+        if not self.is_blob():
+            raise NameError("not a blob!")
         name = self.name()
         if name[0] == '.':
             return "<other>"
