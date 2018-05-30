@@ -12,3 +12,5 @@ setup:
 start:
 	@python src/main.py
 
+test:
+	@python -m unittest discover src/

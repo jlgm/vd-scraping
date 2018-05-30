@@ -48,4 +48,4 @@ jlgm/QuakeParser
 
 ## Tests:
 
-- TODO
+- Run tests with the command `make test`
